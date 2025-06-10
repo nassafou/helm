@@ -1,0 +1,22 @@
+helm install mywp --values values.yaml bitnami/wordpress
+helm get <elements> <mywp>
+
+
+
+kubectl create ns wp
+kubectl apply -f pv.yml
+kubectl apply -f pvc.yml
+helm install -n wp mywp bitnami/wordpress --values values.yaml
+
+
+
+
+installation d'une version spécifique
+
+helm show values  bitnami/wordpress --version 10.4.6
+helm install -n wp mywp bitnami/wordpress --values values.yaml --version 10.4.6
+helm history -n wp mywp
+
+upgrade de version
+
+helm upgrade -n wp mywp bitnami/wordpress --values values.yaml --version 10.10.2
